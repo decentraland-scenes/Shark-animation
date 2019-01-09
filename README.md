@@ -8,9 +8,7 @@ This simple scene shows how to add animations to a `GLTFComponent` and handle cl
 
 ![](screenshot/screenshot.png)
 
-<!--
-[Explore the scene](): this link takes you to a copy of the scene deployed to a remote server where you can interact with it just as if you were running `dcl start` locally.
--->
+[Explore the scene](https://shark-animation-xriykgapld.now.sh/): this link takes you to a copy of the scene deployed to a remote server where you can interact with it just as if you were running `dcl start` locally.
 
 **Install the CLI**
 
