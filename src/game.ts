@@ -1,3 +1,5 @@
+import { Mode, ActivateAnim } from "./modules/activateAnim";
+
 // Add Shark
 let shark = new Entity()
 shark.addComponent(new Transform({
@@ -6,25 +8,19 @@ shark.addComponent(new Transform({
 shark.addComponent(new GLTFShape("models/shark.gltf"))
 
 // Add animations
-/* 
-NOTE: when you try to get an animation clip that hasn't been created
-from a GLTFShape component, the clip is created automatically.
-*/
-const animator = new Animator();
-let clipSwim = new AnimationClip("swim")
-let clipBite = new AnimationClip("bite")
-animator.addClip(clipBite);
-animator.addClip(clipSwim);
 
-shark.addComponent(animator);
-
-// Activate swim animation
-clipSwim.play()
-
-// Add click interaction
-shark.addComponent(new OnPointerDown(e => {
-  clipBite.playing =! clipBite.playing
+let trig = new Entity()
+trig.addComponent(new BoxShape())
+trig.addComponent(new Transform({
+  position: new Vector3(8, 1, 10)
 }))
+engine.addEntity(trig)
+
+let clipSwim = ActivateAnim(shark, "swim", Mode.AlwaysOn)
+//let clipBite = ActivateAnim(shark, "bite", Mode.ClickToggle)
+let clipBite = ActivateAnim(shark, "bite", Mode.TriggerClickToggle, trig)
+
+
 
 // Add shark to engine
 engine.addEntity(shark)
