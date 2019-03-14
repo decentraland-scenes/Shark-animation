@@ -37,15 +37,3 @@ seaBed.addComponent(new Transform({
   scale: new Vector3(0.8, 0.8, 0.8)
 }))
 engine.addEntity(seaBed)
-
-
-// // Add 3D model for scenery
-// const seaBed = new Entity()
-// seaBed.addComponent(new GLTFShape("models/Underwater.gltf"))
-// seaBed.addComponent(new Transform({
-//   position: new Vector3(8, 0, 8),
-//   rotation: Quaternion.Euler(0, 270, 0),
-//   scale: new Vector3(0.8, 0.8, 0.8)
-
-// }))
-// engine.addEntity(seaBed)
