@@ -1,23 +1,28 @@
 // Add Shark
 let shark = new Entity()
-shark.add(new Transform({
-  position: new Vector3(5, 3, 5)
+shark.addComponent(new Transform({
+  position: new Vector3(10, 3, 10)
 }))
-shark.add(new GLTFShape("models/shark.gltf"))
+shark.addComponent(new GLTFShape("models/shark.gltf"))
 
 // Add animations
 /* 
 NOTE: when you try to get an animation clip that hasn't been created
 from a GLTFShape component, the clip is created automatically.
 */
- let clipSwim = shark.get(GLTFShape).getClip("swim")
-let clipBite = shark.get(GLTFShape).getClip("bite")
+const animator = new Animator();
+let clipSwim = new AnimationClip("swim")
+let clipBite = new AnimationClip("bite")
+animator.addClip(clipBite);
+animator.addClip(clipSwim);
+
+shark.addComponent(animator);
 
 // Activate swim animation
 clipSwim.play()
 
 // Add click interaction
-shark.add(new OnClick(e => {
+shark.addComponent(new OnPointerDown(e => {
   clipBite.playing =! clipBite.playing
 }))
 
@@ -26,8 +31,9 @@ engine.addEntity(shark)
 
 // Add 3D model for scenery
 const seaBed = new Entity()
-seaBed.add(new GLTFShape("models/Underwater.gltf"))
-seaBed.add(new Transform({
-  position: new Vector3(5, 0, 5)
+seaBed.addComponent(new GLTFShape("models/Underwater.gltf"))
+seaBed.addComponent(new Transform({
+  position: new Vector3(8, 0, 8),
+  scale: new Vector3(0.8, 0.8, 0.8)
 }))
 engine.addEntity(seaBed)
