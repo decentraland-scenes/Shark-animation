@@ -11,8 +11,8 @@ NOTE: when you try to get an animation clip that hasn't been created
 from a GLTFShape component, the clip is created automatically.
 */
 const animator = new Animator();
-let clipSwim = new AnimationClip("swim")
-let clipBite = new AnimationClip("bite")
+let clipSwim = new AnimationState("swim")
+let clipBite = new AnimationState("bite")
 animator.addClip(clipBite);
 animator.addClip(clipSwim);
 

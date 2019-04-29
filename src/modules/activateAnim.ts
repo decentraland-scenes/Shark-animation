@@ -15,7 +15,7 @@ export function ActivateAnim(ent: Entity, anim: string, mode: Mode, trigger?: En
         ent.addComponent(new Animator())
     }
 
-    let clip = new AnimationClip(anim)
+    let clip = new AnimationState(anim)
     ent.getComponent(Animator).addClip(clip)
 
     switch (mode) {
