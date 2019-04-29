@@ -1,9 +1,9 @@
 // Add Shark
 let shark = new Entity()
 shark.addComponent(new Transform({
-  position: new Vector3(10, 3, 10)
+  position: new Vector3(8, 3, 8)
 }))
-shark.addComponent(new GLTFShape("models/shark.gltf"))
+shark.addComponent(new GLTFShape("models/shark.glb"))
 
 // Add animations
 /* 
