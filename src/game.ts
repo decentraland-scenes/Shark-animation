@@ -22,7 +22,7 @@ shark.addComponent(animator);
 clipSwim.play()
 
 // Add click interaction
-shark.addComponent(new OnPointerDown(e => {
+shark.addComponent(new OnClick(e => {
   clipBite.playing =! clipBite.playing
 }))
 
