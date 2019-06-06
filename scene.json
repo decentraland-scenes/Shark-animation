@@ -12,11 +12,11 @@
     "parcels": [
       "0,0"
     ],
-    "base": "0,0"
+    "base":"0,0"
   },
   "communications": {
     "type": "webrtc",
-    "signalling": "https://signalling-01.decentraland.org"
+    "signalling": "https://content.decentraland.zone"
   },
   "policy": {
     "contentRating": "E",
