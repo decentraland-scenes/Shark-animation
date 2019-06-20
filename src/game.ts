@@ -1,3 +1,7 @@
+// a message bus to sync state for all players
+const sceneMessageBus = new MessageBus()
+
+
 // Add Shark
 let shark = new Entity()
 shark.addComponent(new Transform({
@@ -23,8 +27,14 @@ clipSwim.play()
 
 // Add click interaction
 shark.addComponent(new OnClick(e => {
-  clipBite.playing =! clipBite.playing
+  sceneMessageBus.emit("clickShark", {playing: !clipBite.playing})
+  
 }))
+
+sceneMessageBus.on("clickShark", (info) => {	
+	clipBite.playing = info.playing
+  });
+
 
 // Add shark to engine
 engine.addEntity(shark)
@@ -37,3 +47,13 @@ seaBed.addComponent(new Transform({
   scale: new Vector3(0.8, 0.8, 0.8)
 }))
 engine.addEntity(seaBed)
+
+
+  // To get the initial state of the scene when joining
+  sceneMessageBus.emit("getSharkState",{})
+  
+  // To return the initial state of the scene to new players
+  sceneMessageBus.on("getSharkState", () => {
+	sceneMessageBus.emit("clickShark", {playing: clipBite.playing})
+});
+  
