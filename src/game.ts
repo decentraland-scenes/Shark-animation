@@ -1,40 +1,3 @@
-// Add Shark
-let shark = new Entity()
-shark.addComponent(
-  new Transform({
-    position: new Vector3(8, 3, 8)
-  })
-)
-shark.addComponent(new GLTFShape('models/shark.glb'))
-
-// Add animations
-/* 
-NOTE: when you try to get an animation clip that hasn't been created
-from a GLTFShape component, the clip is created automatically.
-*/
-const animator = new Animator()
-let clipSwim = new AnimationState('swim')
-let clipBite = new AnimationState('bite')
-animator.addClip(clipBite)
-animator.addClip(clipSwim)
-
-shark.addComponent(animator)
-
-// Activate swim animation
-clipSwim.play()
-
-// Add click interaction
-shark.addComponent(
-  new OnPointerDown(
-    e => {
-      clipBite.playing = !clipBite.playing
-    },
-    { button: ActionButton.POINTER, hoverText: 'Toggle bite' }
-  )
-)
-
-// Add shark to engine
-engine.addEntity(shark)
 
 // Add 3D model for scenery
 const seaBed = new Entity()
@@ -46,3 +9,37 @@ seaBed.addComponent(
   })
 )
 engine.addEntity(seaBed)
+
+// Add Shark
+let shark = new Entity()
+shark.addComponent(new GLTFShape('models/shark.glb'))
+shark.addComponent(
+  new Transform({
+    position: new Vector3(8, 3, 8)
+  })
+)
+engine.addEntity(shark)
+
+// Add animations
+const animator = new Animator()
+shark.addComponent(animator)
+
+let clipSwim = new AnimationState('swim')
+animator.addClip(clipSwim)
+
+let clipBite = new AnimationState('bite')
+animator.addClip(clipBite)
+
+// Activate swim animation
+clipSwim.play()
+
+// Toggle bite animation when clicking the shark
+shark.addComponent(
+  new OnPointerDown(
+    e => {
+      clipBite.playing = !clipBite.playing
+    },
+    { button: ActionButton.POINTER, hoverText: 'Toggle bite' }
+  )
+)
+
