@@ -4,25 +4,25 @@ seaBed.addComponent(new GLTFShape('models/Underwater.gltf'))
 seaBed.addComponent(
   new Transform({
     position: new Vector3(8, 0, 8),
-    scale: new Vector3(0.8, 0.8, 0.8),
+    scale: new Vector3(0.8, 0.8, 0.8)
   })
 )
 engine.addEntity(seaBed)
 
 // Add Shark
-let shark = new Entity()
+const shark = new Entity()
 shark.addComponent(new GLTFShape('models/shark.glb'))
 shark.addComponent(
   new Transform({
-    position: new Vector3(8, 3, 8),
+    position: new Vector3(8, 3, 8)
   })
 )
 engine.addEntity(shark)
 
 // Add animations
 const animator = new Animator()
-let clipSwim = new AnimationState('swim', { layer: 0, weight: 0.9 })
-let clipBite = new AnimationState('bite', { layer: 1, weight: 0.01 })
+const clipSwim = new AnimationState('swim', { layer: 0, weight: 0.9 })
+const clipBite = new AnimationState('bite', { layer: 1, weight: 0.01 })
 animator.addClip(clipBite)
 animator.addClip(clipSwim)
 
