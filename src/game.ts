@@ -4,7 +4,7 @@ seaBed.addComponent(new GLTFShape('models/Underwater.gltf'))
 seaBed.addComponent(
   new Transform({
     position: new Vector3(8, 0, 8),
-    scale: new Vector3(0.8, 0.8, 0.8)
+    scale: new Vector3(0.8, 0.8, 0.8),
   })
 )
 engine.addEntity(seaBed)
@@ -14,7 +14,7 @@ const shark = new Entity()
 shark.addComponent(new GLTFShape('models/shark.glb'))
 shark.addComponent(
   new Transform({
-    position: new Vector3(8, 3, 8)
+    position: new Vector3(8, 3, 8),
   })
 )
 engine.addEntity(shark)
