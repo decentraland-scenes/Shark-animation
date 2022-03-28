@@ -21,6 +21,7 @@ engine.addEntity(shark)
 
 // Add animations
 const animator = new Animator()
+shark.addComponent(animator)
 const clipSwim = new AnimationState('swim', { layer: 0, weight: 0.9 })
 const clipBite = new AnimationState('bite', { layer: 1, weight: 0.01 })
 animator.addClip(clipBite)
